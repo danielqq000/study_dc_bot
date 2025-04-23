@@ -1,6 +1,7 @@
 """
 activity_tracker.py
-Last Update: 4/14/25
+Last Update: 4/22/25
+
 追蹤並紀錄各activity,包含加入頻道,使用語音頻道時長,使用反應,發文留言
 """
 
@@ -68,7 +69,7 @@ class UserActivityTracker(commands.Cog):
             f"反應使用次數: {stats['reactions']}\n"
         )
 
-async def setup(bot):
+async def setup(bot: commands.bot):
     await bot.add_cog(UserActivityTracker(bot))
 
 
