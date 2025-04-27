@@ -29,6 +29,8 @@ bot = commands.Bot(command_prefix = "$", intents = intents)
 @bot.event
 async def on_ready():
     print(f"目前登入身份 --> {bot.user}")
+    await bot.tree.sync()
+    print("$指令同步完成")
 
 
 # 載入指令程式檔
