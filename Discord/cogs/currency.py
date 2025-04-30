@@ -6,7 +6,8 @@ currency相關指令
 """
 
 import discord
-from discord.ext import app_commands
+from discord import app_commands
+from discord.ext import commands
 
 # data存儲未定案
 user_exp_data = {}
@@ -55,4 +56,4 @@ class currencyCommands(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(CurrencyCommands(bot))
+    await bot.add_cog(currencyCommands(bot))

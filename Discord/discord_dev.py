@@ -86,7 +86,7 @@ async def load_extensions():
     for root, _, files in os.walk('./cogs'):
         for file in files:
             if file.endswith(".py") and not file.startswith("__"):
-                ext = os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').rstrip('.py')
+                ext = os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').replace('.py', "")
                 await bot.load_extension(ext)
 
 def find_extension(name):
@@ -96,13 +96,13 @@ def find_extension(name):
         for root, _, files in os.walk('./cogs'):
             for file in files:
                 if os.path.join(root, file).endswith(possible_path):
-                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').rstrip('.py')
+                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').replace('.py', "")
     else:
         # 如果不包含路徑，查找第一个相符的文件
         for root, _, files in os.walk('./cogs'):
             for file in files:
                 if file == f"{name}.py":
-                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').rstrip('.py')
+                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').replace('.py', "")
     return None
 # main
 async def main():

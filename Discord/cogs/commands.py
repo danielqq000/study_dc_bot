@@ -7,6 +7,7 @@ Last Update: 4/22/25
 
 import discord
 from discord.ext import commands
+from discord import app_commands
 
 from lib.database import mycursor
 
@@ -17,7 +18,7 @@ class Bot_commands(commands.Cog):
         
     # 查看等級排行, 用embed形式回覆
     @app_commands.command(name="rank", description="查看你的等級和排行")
-    async def rank(self, interaction: discord.interaction):
+    async def rank(self, interaction: discord.Interaction):
         user_id = interaction.user.id
         # fake data for now
         rank = 5
@@ -31,15 +32,15 @@ class Bot_commands(commands.Cog):
         embed.add_field(name="經驗值", value=f"{exp}/ {next_level_exp}", inline=True)
         embed.add_field(name="伺服器排行", value=f"#{rank}", inline=False)
         await interaction.response.send_message(embed=embed)
-
-
+        
     @app_commands.command(name="coin", description="查看你的金幣數量")
-    async def coin(self, interaciton: discord.interaction):
-        user_id = interaction.user.id
+    async def coin(self, interaciton: discord.Interaction):
+        print(f"coin: ")
+        user_id = interaciton.user.id
 
         # fake data for now
         coin = 2357
-        await interaction.response.send_message(f"你目前擁有 {coins} 金幣")
+        await interaciton.response.send_message(f"你目前擁有 {coins} 金幣")
 
 
 

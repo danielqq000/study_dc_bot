@@ -6,7 +6,8 @@ exp相關指令
 """
 
 import discord
-from discord.ext import app_commands
+from discord import app_commands
+from discord.ext import commands
 
 # data存儲未定案
 user_exp_data = {}
@@ -17,7 +18,7 @@ class ExpCommands(commands.Cog):
 
     # /xp add {user} {amount}
     @app_commands.command(name="xp_add", description="增加某位使用者的經驗值")
-    @app_commands.discribe(user="要增加經驗值的用戶", amount="要增加的數值")
+    @app_commands.describe(user="要增加經驗值的用戶", amount="要增加的數值")
     async def xp_add(self, interaction: discord.Interaction, user: discord.User, amount: int):
         user_exp_data[user.id] = user_exp_data.get(user.id, 0) + amount
         await interaction.response.send_message(f"已為 {user.mention} 增加 {amount} 經驗值，目前為 {user_exp_data[user.id]} XP")

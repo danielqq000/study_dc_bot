@@ -56,7 +56,9 @@ class UserActivityTracker(commands.Cog):
     # 查詢使用者活動資料
     @commands.command(name="activity")
     async def activity(self, ctx, member: discord.Member = None):
+        print("In activity")
         member = member or ctx.author
+        print(f"In activity, member: {member}")
         stats = user_stats.get(member.id, {"Voice_seconds": 0, "messages": 0, "reactions": 0})
         joined = member.joined_at.strftime("%Y-%m-%d") if member.joined_at else "Unknown"
         voice_minutes = stats["voice seconds"] / 60
