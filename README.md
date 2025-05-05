@@ -44,6 +44,13 @@ pip install -r requirement.txt
 
 3. 設定環境變數或 config.py：
 
+請複製config_example.py並建立local的config.py。
+
+```bash
+cd Discord/lib
+cp config_example.py config.py
+```
+
 請於 lib/config.py 設定你的 Discord Bot Token、資料庫位置等必要參數。
 
 ## 🥪 執行方式
