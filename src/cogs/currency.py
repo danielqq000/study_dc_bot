@@ -1,6 +1,6 @@
 """
 cogs/currency.py
-Last Update: 5/12/25
+Last Update: 5/13/25
 
 currency相關指令
 """
@@ -11,9 +11,9 @@ from discord.ext import commands
 from lib.config import GUILD_ID
 
 # data存儲未定案
-user_exp_data = {}
+user_currency_data = {}
 
-class currencyCommands(commands.Cog):
+class CurrencyCommands(commands.Cog):
     def __init__(self,bot):
         self.bot = bot
 
@@ -61,4 +61,4 @@ class currencyCommands(commands.Cog):
         await interaction.response.send_message(embed=embed)
 
 async def setup(bot: commands.Bot):
-    await bot.add_cog(currencyCommands(bot))
+    await bot.add_cog(CurrencyCommands(bot))
