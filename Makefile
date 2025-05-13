@@ -46,6 +46,8 @@ config:
 
 # Run all setup
 setup: db config
+	@echo "download requirements..."
+	@pip install -r requirement.txt
 	@echo "Setup complete. You can now run the app."
 
 # Stop docker
