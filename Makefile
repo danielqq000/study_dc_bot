@@ -42,7 +42,10 @@ config:
 	@read -p "Enter your BOT_TOKEN: " token; \
 	sed -i.bak "s/^BOT_TOKEN *=.*/BOT_TOKEN = '$$token'/" $(CONFIG); \
 	rm -f $(CONFIG).bak
-	@echo "$(CONFIG) created with BOT_TOKEN set."
+	@read -p "Enter your GUILD_ID: " id; \
+	sed -i.bak "s/^GUILD_ID *=.*/GUILD_ID = '$$id'/" $(CONFIG); \
+	rm -f $(CONFIG).bak
+	@echo "$(CONFIG) created."
 
 # Run all setup
 setup: db config
