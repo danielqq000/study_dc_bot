@@ -1,6 +1,6 @@
 """
 discord_dev.py
-Last Update: 5/12/25
+Last Update: 5/13/25
 
 BOT主程式
 """
@@ -109,21 +109,18 @@ async def load_extensions():
                 except Exception as e:
                     print(f"❌ 載入失敗: {ext} -> {e}")
     print("\n✅ 所有 Cogs 載入完成\n")
+
+# 只找src/cogs底下的
 def find_extension(name):
-    # 如果包含路径，則優先查找指定路徑下的文件
-    if '.' in name:
-        possible_path = name.replace('.', '/') + '.py'
-        for root, _, files in os.walk('src/cogs'):
-            for file in files:
-                if os.path.join(root, file).endswith(possible_path):
-                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').replace('.py', "")
-    else:
-        # 如果不包含路徑，查找第一个相符的文件
-        for root, _, files in os.walk('./cogs'):
-            for file in files:
-                if file == f"{name}.py":
-                    return os.path.join(root, file).replace('./', '').replace('/', '.').replace('\\', '.').replace('.py', "")
+    cogs_dir = os.path.join(base_path, 'cogs')
+    target_file = f"{name}.py"
+
+    for file in os.listdir(cogs_dir):
+        if file == target_file:
+            return f"cogs.{name}"
+
     return None
+
 # main
 async def main():
     await load_extensions()
