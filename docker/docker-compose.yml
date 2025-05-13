@@ -3,7 +3,7 @@
 services:
   db:
     image: mysql:9.2.0
-    container_name: my-mysql
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: mydb
