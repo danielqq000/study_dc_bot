@@ -4,7 +4,7 @@
 DOCKER_COMPOSE=docker compose -f docker/docker-compose.yml
 
 # Paths
-CONFIG_DIR=Discord/lib
+CONFIG_DIR=src/lib
 CONFIG_EXAMPLE=$(CONFIG_DIR)/config_example.py
 CONFIG=$(CONFIG_DIR)/config.py
 
@@ -55,5 +55,5 @@ stop:
 # Run Python main
 run:
 	@echo "starting bot..."
-	@python3 Discord/discord_dev.py
+	@python3 main.py
 
