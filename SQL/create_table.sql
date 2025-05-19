@@ -1,16 +1,16 @@
--- Active: 1744529349702@@127.0.0.1@5004
 DROP DATABASE IF EXISTS DISCORDBOT_DEV;
 CREATE DATABASE DISCORDBOT_DEV;
 USE DISCORDBOT_DEV;
 
 CREATE TABLE IF NOT EXISTS user_data (
+    `id` INT NOT NULL AUTO_INCREMENT,
     `user_id` VARCHAR(30) UNIQUE NOT NULL,
     `user_xp` INT DEFAULT(0),
     `posts` INT DEFAULT(0),
     `reaction` INT DEFAULT(0),
     `joined_time` DATETIME DEFAULT(CURRENT_DATE) NOT NULL,
     `leave` BOOLEAN DEFAULT(FALSE) NOT NULL,
-    PRIMARY KEY (`user_id`)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS xp_log (
@@ -21,4 +21,11 @@ CREATE TABLE IF NOT EXISTS xp_log (
     `xp_record` DATETIME NOT NULL,
     PRIMARY KEY (`id`),
     FOREIGN KEY (`user_id`) REFERENCES user_data(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS channel_boost (
+    `channel_id` VARCHAR(30) NOT NULL,
+    `channel_name` VARCHAR(30) NOT NULL,
+    `boost_percent` FLOAT NOT NULL,
+    PRIVATE KEY (`channel_id`)
 );
